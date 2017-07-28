@@ -1,6 +1,8 @@
-# VUE-PROGRESSIVE-IMAGE
+# VUE-PROGRESSIVE-IMAGES
 
-This NPM package for Vue.JS provides a way to offer progressive image loading in Vue Apps.
+NPM package for Vue.JS: 
+
+Super light weight script that provides a way to offer progressive image loading in Vue Apps.
 
 The script will check the browser's screen resolution and then update the SRC property of the IMG tag.
 

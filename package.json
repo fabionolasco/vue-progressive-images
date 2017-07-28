@@ -1,9 +1,18 @@
 {
-  "name": "vue-progressive-image",
-  "version": "1.0.0",
-  "description": "This NPM package for Vue.JS provides a way to offer progressive image loading in Vue Apps.",
-  "keywords": ["Vue", "Image", "img", "progressive", "lazy-load"],
+  "name": "vue-progressive-images",
   "author": "Fabio Nolasco",
+  "version": "1.0.0",
   "license": "MIT",
-  "repository": {"type" : "git", "url" : "https://github.com/fabionolasco/vue-progressive-image"}
+  "description": "NPM package for Vue.JS: Super light weight script that provides a way to offer progressive image loading in Vue Apps.",
+  "keywords": [
+    "Vue",
+    "Image",
+    "img",
+    "progressive",
+    "lazy-load"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabionolasco/vue-progressive-images"
+  }
 }
