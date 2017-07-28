@@ -38,6 +38,44 @@ For a manual process you can use Photoshop and the plugin "Retinize It".
 
 The first time the script runs it will offer the lower resolution image @0x. That image should be small, maybe 3Kb or less. Then, once page is loaded and all the resources are rendered on browser, then the script will get the screen aspect ration and update on IMG tags, replacing the @0x with 1x, 2x or 3x. If nothing else, this script will help speed up your first page load.
 
+## Properties
+
+### src
+(Mandatory)
+Type: Text.
+Purpose: Reference the image URL.
+
+### alt
+(Optional - but highly recommended)
+Type: Text.
+Purpose: Text that will be added to image alt property.
+Default: Empty.
+Example: alt="My image alt text"
+
+### max-ratio
+(Optional)
+Type: Number.
+Default: Unlimited.
+Purpose: Limit the loading of image to ratio number.
+Example: max-ratio="1"
+This will make sure that even in screens with higher ratio, the plugin will only go up to 1.
+
+### blur
+(Optional)
+Type: Number
+Purpose: Define the level of blur-ness.
+Default: No blur.
+Example: blur="5"
+This will cause the CSS for the image to have a blur level 5px.
+
+### animate
+(Optional)
+Type: Number
+Purpose: Define the speed (in seconds) of animation for removing blur filter.
+Default: No animate.
+Example: animate="2.5"
+This will cause the animation to remove blur to take 2.5 seconds.
+
 ## Compatibility
 
 This script is compatible with IE 9+. However, on IE10 and older it will only fallback to the basic image @1x.
