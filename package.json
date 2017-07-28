@@ -3,11 +3,14 @@
   "author": "Fabio Nolasco",
   "version": "1.0.0",
   "license": "MIT",
+  "main": "src/Image.vue",
   "description": "NPM package for Vue.JS: Super light weight script that provides a way to offer progressive image loading in Vue Apps.",
   "keywords": [
     "Vue",
+    "Vue.js",
     "Image",
     "img",
+    "retina",
     "progressive",
     "lazy-load"
   ],

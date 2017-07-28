@@ -25,18 +25,18 @@ export default {
     },
   },
   created() {
-    if (Vue.config.fabioApp && Vue.config.fabioApp.pageLoaded) {
+    if (Vue.config.progressiveImages && Vue.config.progressiveImages.pageLoaded) {
       this.updateSrc();
     }
   },
   mounted() {
     if (window.addEventListener) {
       windowEvent = window.addEventListener('load', () => {
-        Vue.config.fabioApp.pageLoaded = true;
+        Vue.config.progressiveImages.pageLoaded = true;
         this.updateSrc();
       }, false);
     }
-    Vue.config.fabioApp = Vue.config.fabioApp ? Vue.config.fabioApp : {};
+    Vue.config.progressiveImages = Vue.config.progressiveImages ? Vue.config.progressiveImages : {};
   },
   destroy() {
     window.removeEventListener('load', windowEvent);
