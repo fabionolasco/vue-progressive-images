@@ -42,39 +42,39 @@ The first time the script runs it will offer the lower resolution image @0x. Tha
 
 ### src
 (Mandatory)
-Type: Text.
-Purpose: Reference the image URL.
+- Type: Text.
+- Purpose: Reference the image URL.
 
 ### alt
 (Optional - but highly recommended)
-Type: Text.
-Purpose: Text that will be added to image alt property.
-Default: Empty.
-Example: alt="My image alt text"
+- Type: Text.
+- Purpose: Text that will be added to image alt property.
+- Default: Empty.
+- Example: alt="My image alt text"
 
 ### max-ratio
 (Optional)
-Type: Number.
-Default: Unlimited.
-Purpose: Limit the loading of image to ratio number.
-Example: max-ratio="1"
-This will make sure that even in screens with higher ratio, the plugin will only go up to 1.
+- Type: Number.
+- Default: Unlimited.
+- Purpose: Limit the loading of image to ratio number.
+- Example: max-ratio="1"
+- This will make sure that even in screens with higher ratio, the plugin will only go up to 1.
 
 ### blur
 (Optional)
-Type: Number
-Purpose: Define the level of blur-ness.
-Default: No blur.
-Example: blur="5"
-This will cause the CSS for the image to have a blur level 5px.
+- Type: Number
+- Purpose: Define the level of blur-ness.
+- Default: No blur.
+- Example: blur="5"
+- This will cause the CSS for the image to have a blur level 5px.
 
 ### animate
 (Optional)
-Type: Number
-Purpose: Define the speed (in seconds) of animation for removing blur filter.
-Default: No animate.
-Example: animate="2.5"
-This will cause the animation to remove blur to take 2.5 seconds.
+- Type: Number
+- Purpose: Define the speed (in seconds) of animation for removing blur filter.
+- Default: No animate.
+- Example: animate="2.5"
+- This will cause the animation to remove blur to take 2.5 seconds.
 
 ## Compatibility
 

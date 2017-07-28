@@ -1,7 +1,7 @@
 {
   "name": "vue-progressive-images",
   "author": "Fabio Nolasco",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "MIT",
   "main": "src/Image.vue",
   "description": "NPM package for Vue.JS: Super light weight script that provides a way to offer progressive image loading in Vue Apps.",
