@@ -40,7 +40,7 @@ This script is compatible with IE 9+. However, on IE10 and older it will only fa
 </template>
 
 <script>
-import Image from './_Image';
+import Image from 'vue-progressive-Images';
 
 export default {
   name: 'my-header',
