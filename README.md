@@ -122,6 +122,29 @@ new Vue({
 
 ```
 
+## How to use with NUXT ?
+
+In order to use this script with NUXT, please create a new component within your NUXT project, lets say "components/Image.vue", and then copy and past the content from the file "vue-progressive-images/src/Image-Nuxt.vue" into it. Once that is done, you can register the component as a global component. To do that, edit your main layout (vue).
+
+```html
+<template>
+  <div>
+    <router-view></router-view>
+  </div>
+</template>
+
+<script>
+import Vue from 'vue'
+import Image from '@/components/Image'
+
+Vue.component('fn-image', Image)
+
+export default { }
+</script>
+```
+
+Please notice that the code standard for Nuxt Apps is very different from some of the standards offered by Vue-CLI.
+
 ## Collaboration
 
 Collaboration is welcomed. Please send your pull request.
