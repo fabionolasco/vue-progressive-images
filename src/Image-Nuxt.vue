@@ -8,33 +8,33 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue from 'vue'
 
-let windowEvent;
+let windowEvent
 export default {
   name: 'fn-image',
   props: ['src', 'alt', 'blur', 'animate', 'maxRatio'],
-  data() {
+  data () {
     return {
       srcValue: this.src,
       blurValue: 0,
       animateValue: 0,
-      styles: {},
-    };
+      styles: {}
+    }
   },
   methods: {
-    updateSrc() {
-      let dpi = window.devicePixelRatio;
+    updateSrc () {
+      let dpi = window.devicePixelRatio
       if (this.srcValue && dpi && dpi >= 1) {
         if (typeof this.maxRatio === 'number' && dpi > this.maxRatio) {
-          dpi = this.maxRatio;
+          dpi = this.maxRatio
         }
-        this.srcValue = this.srcValue.replace('@0', `@${dpi.toString()[0]}`);
-        this.blurValue = 0;
-        this.updateBlur();
+        this.srcValue = this.srcValue.replace('@0', `@${dpi.toString()[0]}`)
+        this.blurValue = 0
+        this.updateBlur()
       }
     },
-    updateBlur() {
+    updateBlur () {
       if (typeof this.blur !== 'undefined') {
         this.styles = {
           filter: `blur(${this.blurValue}px)`,
@@ -46,35 +46,35 @@ export default {
           '-webkit-transition': `${this.animateValue}s -webkit-filter linear`,
           '-moz-transition': `${this.animateValue}s -moz-filter linear`,
           '-ms-transition': `${this.animateValue}s -ms-filter linear`,
-          '-o-transition': `${this.animateValue}s -o-filter linear`,
-        };
+          '-o-transition': `${this.animateValue}s -o-filter linear`
+        }
       }
     }
   },
-  created() {
+  created () {
     if (Vue.config.progressiveImages && Vue.config.progressiveImages.pageLoaded) {
-      this.updateSrc();
+      this.updateSrc()
     }
   },
-  mounted() {
+  mounted () {
     // Check Blur
-    if (typeof (this.blur * 1) === 'number') { this.blurValue = this.blur * 1; }
-    if (typeof (this.animate * 1) === 'number') { this.animateValue = this.animate * 1; }
-    this.srcValue = this.src;
-    this.updateBlur();
+    if (typeof (this.blur * 1) === 'number') { this.blurValue = this.blur * 1 }
+    if (typeof (this.animate * 1) === 'number') { this.animateValue = this.animate * 1 }
+    this.srcValue = this.src
+    this.updateBlur()
     // Initiate Progressive Loading
-    Vue.config.progressiveImages = Vue.config.progressiveImages ? Vue.config.progressiveImages : {};
+    Vue.config.progressiveImages = Vue.config.progressiveImages ? Vue.config.progressiveImages : {}
     if (window.addEventListener) {
       windowEvent = window.addEventListener('load', () => {
-        Vue.config.progressiveImages.pageLoaded = true;
-        this.updateSrc();
-      }, false);
+        Vue.config.progressiveImages.pageLoaded = true
+        this.updateSrc()
+      }, false)
     }
   },
-  destroy() {
-    window.removeEventListener('load', windowEvent);
-  },
-};
+  destroy () {
+    window.removeEventListener('load', windowEvent)
+  }
+}
 </script>
 
 <style>
