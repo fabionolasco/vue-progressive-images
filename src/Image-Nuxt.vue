@@ -10,69 +10,73 @@
 <script>
 import Vue from 'vue'
 
-let windowEvent
 export default {
   name: 'fn-image',
   props: ['src', 'alt', 'blur', 'animate', 'maxRatio'],
   data () {
     return {
       srcValue: this.src,
-      blurValue: 0,
-      animateValue: 0,
       styles: {}
     }
   },
   methods: {
     updateSrc () {
-      let dpi = window.devicePixelRatio
+      let dpi = window.devicePixelRatio || 1
       if (this.srcValue && dpi && dpi >= 1) {
         if (typeof this.maxRatio === 'number' && dpi > this.maxRatio) {
           dpi = this.maxRatio
         }
         this.srcValue = this.srcValue.replace('@0', `@${dpi.toString()[0]}`)
-        this.blurValue = 0
-        this.updateBlur()
-      }
-    },
-    updateBlur () {
-      if (typeof this.blur !== 'undefined') {
-        this.styles = {
-          filter: `blur(${this.blurValue}px)`,
-          '-webkit-filter': `blur(${this.blurValue}px)`,
-          '-moz-filter': `blur(${this.blurValue}px)`,
-          '-o-filter': `blur(${this.blurValue}px)`,
-          '-ms-filter': `blur(${this.blurValue}px)`,
-          transition: `${this.animateValue}s filter linear`,
-          '-webkit-transition': `${this.animateValue}s -webkit-filter linear`,
-          '-moz-transition': `${this.animateValue}s -moz-filter linear`,
-          '-ms-transition': `${this.animateValue}s -ms-filter linear`,
-          '-o-transition': `${this.animateValue}s -o-filter linear`
+        if (this.blur) {
+         setTimeout(() => { this.updateBlur(0) }, 0)
         }
       }
+    },
+    updateBlur (x) {
+      this.styles.filter = `blur(${x}px)`
+      this.styles['-webkit-filter'] = `blur(${x}px)`
+      this.styles['-moz-filter'] = `blur(${x}px)`
+      this.styles['-o-filter'] = `blur(${x}px)`
+      this.styles['-ms-filter'] = `blur(${x}px)`
     }
   },
   created () {
+    // Init Styles
+    let blurValue = typeof (this.blur * 1) === 'number' ? this.blur * 1 : 0
+    let animateValue = typeof (this.animate * 1) === 'number' ? this.animate * 1 : 0
+    if (this.blur) {
+      this.styles = {
+        filter: `blur(${blurValue}px)`,
+        '-webkit-filter': `blur(${blurValue}px)`,
+        '-moz-filter': `blur(${blurValue}px)`,
+        '-o-filter': `blur(${blurValue}px)`,
+        '-ms-filter': `blur(${blurValue}px)`,
+        transition: `${animateValue}s filter linear`,
+        '-webkit-transition': `${animateValue}s -webkit-filter linear`,
+        '-moz-transition': `${animateValue}s -moz-filter linear`,
+        '-ms-transition': `${animateValue}s -ms-filter linear`,
+        '-o-transition': `${animateValue}s -o-filter linear`
+      }
+    }
+    // Cause image to show again
+    this.windowEvent = false
     if (Vue.config.progressiveImages && Vue.config.progressiveImages.pageLoaded) {
       this.updateSrc()
     }
   },
   mounted () {
-    // Check Blur
-    if (typeof (this.blur * 1) === 'number') { this.blurValue = this.blur * 1 }
-    if (typeof (this.animate * 1) === 'number') { this.animateValue = this.animate * 1 }
-    this.srcValue = this.src
-    this.updateBlur()
-    // Initiate Progressive Loading
+    // Initiate progressive loading after all content is rendered
     Vue.config.progressiveImages = Vue.config.progressiveImages ? Vue.config.progressiveImages : {}
     if (window.addEventListener) {
-      windowEvent = window.addEventListener('load', () => {
+      this.windowEvent = () => {
         Vue.config.progressiveImages.pageLoaded = true
         this.updateSrc()
-      }, false)
+      }
+      window.addEventListener('load', this.windowEvent, false)
     }
   },
   destroy () {
-    window.removeEventListener('load', windowEvent)
+    window.removeEventListener('load', this.windowEvent)
   }
 }
 </script>
