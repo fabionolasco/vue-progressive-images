@@ -2,7 +2,18 @@
 
 NPM package for Vue.JS: 
 
-Super light weight script that provides a way to offer progressive image loading in Vue Apps.
+Super lightweight script that provides a way to offer progressive image loading in Vue Apps.
+
+**Important:**
+
+You might not need this plugin if you are targeting newer browsers. The IMG tag have a property called SRCSET, which is much more powerful.
+
+[http://caniuse.com/#feat=srcset](http://caniuse.com/#feat=srcset)
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)
+
+
+**But if you need this plugin, here is how you get it:**
 
 ```
 npm install vue-progressive-images
